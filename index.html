@@ -41,6 +41,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Google Analytics 4 -->
+    <!-- REPLACE GA_MEASUREMENT_ID WITH YOUR ACTUAL GA4 MEASUREMENT ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D65FXG0HL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        // Define isDevelopment variable globally
+        window.isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        
+        // Configure GA4 with enhanced settings
+        gtag('config', 'G-0D65FXG0HL', {
+            // Enhanced measurement settings
+            'send_page_view': true,
+            'cookie_flags': 'SameSite=None;Secure',
+            'cookie_domain': 'auto',
+            'cookie_expires': 63072000, // 2 years in seconds
+            'cookie_update': true,
+            
+            // Custom dimensions (configure these in GA4 admin)
+            'user_properties': {
+                'user_type': window.votesClicked > 0 ? 'returning_voter' : 'new_visitor',
+                'preferred_platform': localStorage.getItem('preferred_voting_platform') || 'none'
+            },
+            
+            // Custom metrics
+            'custom_map': {
+                'dimension1': 'session_votes_count',
+                'dimension2': 'total_time_on_page',
+                'dimension3': 'max_scroll_depth',
+                'dimension4': 'device_category',
+                'dimension5': 'voting_platform_preference',
+                'metric1': 'votes_clicked',
+                'metric2': 'links_clicked',
+                'metric3': 'scroll_percentage',
+                'metric4': 'engagement_time'
+            }
+        });
+        
+        // Debug mode for development
+        if (window.isDevelopment) {
+            console.log('[GA4] Running in development mode - tracking disabled');
+            window.gtag = function() {
+                console.log('[GA4 Debug]', arguments);
+            };
+        }
+    </script>
+    
     <!-- Vercel Analytics -->
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -186,6 +235,7 @@
             font-weight: 700;
             background: linear-gradient(45deg, #fff, var(--accent));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
         }
@@ -463,52 +513,49 @@
         <section class="hero">
             <div class="typewriter-container">
                 <h1 class="typing-text" id="typewriter"></h1>
-            </div>
-            <p class="subtitle">Help our server grow by voting daily! Each vote supports our community and helps us provide better features.</p>
-
+        </section>
 
         <section id="vote" style="width: 100%;">
-            <h2 style="text-align: center; margin-bottom: 30px; font-size: 2rem;">Vote on These Platforms</h2>
             <div class="vote-grid">
                 <!-- ALL WORKING VOTING LINKS -->
                 
-                <a href="https://minecraft-server-list.com/server/503455/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft Server List">
+                <a href="https://minecraft-server-list.com/server/503455/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft Server List" data-category="voting" data-position="1">
                     <h3 class="card-title"><i class="fas fa-chart-line card-icon"></i> Minecraft Server List</h3>
                     <p class="card-desc">Vote and help us reach the top of the charts</p>
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://minecraft-mp.com/server/330660/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft MP">
+                <a href="https://minecraft-mp.com/server/330660/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft MP" data-category="voting" data-position="2">
                     <h3 class="card-title"><i class="fas fa-globe card-icon"></i> Minecraft MP</h3>
                     <p class="card-desc">Support us on the global server list</p>
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://www.planetminecraft.com/server/hustlersmc/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Planet Minecraft">
+                <a href="https://www.planetminecraft.com/server/hustlersmc/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Planet Minecraft" data-category="voting" data-position="3">
                     <h3 class="card-title"><i class="fas fa-globe-americas card-icon"></i> Planet Minecraft</h3>
                     <p class="card-desc">Vote on the largest MC community</p>
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://minecraftservers.org/vote/285642" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft Servers">
+                <a href="https://minecraftservers.org/vote/285642" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft Servers" data-category="voting" data-position="4">
                     <h3 class="card-title"><i class="fas fa-search card-icon"></i> Minecraft Servers</h3>
                     <p class="card-desc">Find and vote for us on MC Servers</p>
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://topg.org/minecraft-servers/server-652747" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="TopG Minecraft">
+                <a href="https://topg.org/minecraft-servers/server-652747" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="TopG Minecraft" data-category="voting" data-position="5">
                     <h3 class="card-title"><i class="fas fa-trophy card-icon"></i> TopG Minecraft</h3>
                     <p class="card-desc">Vote on TopG ranking platform</p>
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://minecraft-server.net/vote/HustlersMC" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft Server">
+                <a href="https://minecraft-server.net/vote/HustlersMC" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft Server" data-category="voting" data-position="6">
                     <h3 class="card-title"><i class="fas fa-server card-icon"></i> Minecraft Server</h3>
                     <p class="card-desc">Simple and fast voting platform</p>
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://minecraft.buzz/server/hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card success-card" data-analytics="vote-click" data-platform="Minecraft Buzz">
+                <a href="https://minecraft.buzz/server/hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card success-card" data-analytics="vote-click" data-platform="Minecraft Buzz" data-category="voting" data-position="7">
                     <h3 class="card-title"><i class="fas fa-bullhorn card-icon"></i> Minecraft Buzz</h3>
                     <p class="card-desc">Boost our visibility on this popular platform</p>
                     <div class="success-badge">
@@ -517,25 +564,25 @@
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://minecraftlist.org/vote/hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft List">
+                <a href="https://minecraftlist.org/vote/hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft List" data-category="voting" data-position="8">
                     <h3 class="card-title"><i class="fas fa-list card-icon"></i> Minecraft List</h3>
                     <p class="card-desc">Simple and effective voting</p>
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://servers-minecraft.net/server-hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Servers Minecraft">
+                <a href="https://servers-minecraft.net/server-hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Servers Minecraft" data-category="voting" data-position="9">
                     <h3 class="card-title"><i class="fas fa-network-wired card-icon"></i> Servers Minecraft</h3>
                     <p class="card-desc">Network with other MC enthusiasts</p>
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://best-minecraft-servers.co/server/hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Best MC Servers">
+                <a href="https://best-minecraft-servers.co/server/hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Best MC Servers" data-category="voting" data-position="10">
                     <h3 class="card-title"><i class="fas fa-award card-icon"></i> Best MC Servers</h3>
                     <p class="card-desc">Vote on the Best Minecraft Servers</p>
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://topminecraftservers.org/server/258" target="_blank" rel="noopener noreferrer" class="glass-card success-card" data-analytics="vote-click" data-platform="Top MC Servers">
+                <a href="https://topminecraftservers.org/server/258" target="_blank" rel="noopener noreferrer" class="glass-card success-card" data-analytics="vote-click" data-platform="Top MC Servers" data-category="voting" data-position="11">
                     <h3 class="card-title"><i class="fas fa-star card-icon"></i> Top MC Servers</h3>
                     <p class="card-desc">High-traffic voting platform</p>
                     <div class="success-badge">
@@ -544,7 +591,7 @@
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
                 </a>
                 
-                <a href="https://minecraftpocket-servers.com/server/118822/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="MC Pocket Servers">
+                <a href="https://minecraftpocket-servers.com/server/118822/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="MC Pocket Servers" data-category="voting" data-position="12">
                     <h3 class="card-title"><i class="fas fa-mobile-alt card-icon"></i> MC Pocket Servers</h3>
                     <p class="card-desc">Supports Minecraft Pocket Edition</p>
                     <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
@@ -580,13 +627,301 @@
     </footer>
 
     <script>
+        // ============================================
+        // GOOGLE ANALYTICS 4 TRACKING IMPLEMENTATION
+        // ============================================
+        
+        // Configuration - Use the global isDevelopment variable
+        const GA_MEASUREMENT_ID = 'G-0D65FXG0HL'; // REPLACE WITH YOUR GA4 MEASUREMENT ID
+        
+        // GA4 Event Tracking Function
+        function trackGAEvent(eventName, eventParams = {}) {
+            // Set default parameters
+            const defaultParams = {
+                page_title: document.title,
+                page_location: window.location.href,
+                page_path: window.location.pathname,
+                engagement_time_msec: 100,
+                session_id: getSessionId(),
+                user_id: getUserId(),
+                timestamp: new Date().toISOString()
+            };
+            
+            // Merge parameters
+            const finalParams = { ...defaultParams, ...eventParams };
+            
+            // Send to GA4
+            if (typeof gtag === 'function' && !window.isDevelopment) {
+                gtag('event', eventName, finalParams);
+            }
+            
+            // Debug logging only in development
+            if (window.isDevelopment) {
+                console.log(`[GA4 Event] ${eventName}:`, finalParams);
+            }
+            
+            // Also send to Vercel Analytics if available
+            if (typeof window.va === 'function') {
+                window.va('event', {
+                    name: eventName,
+                    data: finalParams
+                });
+            }
+        }
+        
+        // Helper Functions
+        function getSessionId() {
+            let sessionId = sessionStorage.getItem('ga_session_id');
+            if (!sessionId) {
+                sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem('ga_session_id', sessionId);
+            }
+            return sessionId;
+        }
+        
+        function getUserId() {
+            let userId = localStorage.getItem('ga_user_id');
+            if (!userId) {
+                userId = 'user_' + Math.random().toString(36).substr(2, 16);
+                localStorage.setItem('ga_user_id', userId);
+                
+                // Track new user
+                trackGAEvent('first_visit', {
+                    user_id: userId,
+                    first_visit_date: new Date().toISOString().split('T')[0]
+                });
+            }
+            return userId;
+        }
+        
+        function getDeviceCategory() {
+            const width = window.innerWidth;
+            if (width < 768) return 'mobile';
+            if (width < 1024) return 'tablet';
+            return 'desktop';
+        }
+        
+        function getPreferredPlatform() {
+            return localStorage.getItem('preferred_voting_platform') || 'none';
+        }
+        
+        // Enhanced Scroll Tracking
+        let maxScrollDepth = 0;
+        let scrollCheckpoints = [25, 50, 75, 90, 100];
+        let trackedCheckpoints = new Set();
+        
+        function trackScrollDepth() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const currentScroll = window.scrollY;
+            const scrollPercentage = Math.round((currentScroll / scrollHeight) * 100);
+            
+            // Track max scroll depth
+            if (scrollPercentage > maxScrollDepth) {
+                maxScrollDepth = scrollPercentage;
+                
+                // Send scroll depth as a metric
+                if (!window.isDevelopment) {
+                    gtag('event', 'scroll', {
+                        scroll_depth: maxScrollDepth,
+                        metric3: maxScrollDepth
+                    });
+                }
+                
+                // Check for specific checkpoints
+                scrollCheckpoints.forEach(checkpoint => {
+                    if (scrollPercentage >= checkpoint && !trackedCheckpoints.has(checkpoint)) {
+                        trackedCheckpoints.add(checkpoint);
+                        trackGAEvent('scroll_depth_reached', {
+                            scroll_percentage: checkpoint,
+                            metric3: checkpoint
+                        });
+                    }
+                });
+            }
+        }
+        
+        // Time on Page Tracking
+        let timeOnPage = 0;
+        let pageStartTime = Date.now();
+        let engagementTimer = null;
+        
+        function startEngagementTimer() {
+            engagementTimer = setInterval(() => {
+                timeOnPage = Math.floor((Date.now() - pageStartTime) / 1000);
+                
+                // Send engagement every 30 seconds
+                if (timeOnPage % 30 === 0) {
+                    trackGAEvent('engagement', {
+                        engagement_time: timeOnPage,
+                        metric4: timeOnPage * 1000 // Convert to milliseconds
+                    });
+                }
+            }, 1000);
+        }
+        
+        // Link Click Tracking with Enhanced Data
+        function setupLinkTracking() {
+            document.addEventListener('click', function(e) {
+                const link = e.target.closest('a');
+                if (!link) return;
+                
+                const analyticsData = link.dataset;
+                const eventType = analyticsData.analytics || 'link_click';
+                const platform = analyticsData.platform || link.textContent.trim() || 'unknown';
+                const category = analyticsData.category || 'navigation';
+                const position = analyticsData.position || 'unknown';
+                
+                // Prepare event parameters
+                const eventParams = {
+                    link_url: link.href,
+                    link_text: link.textContent.trim(),
+                    link_platform: platform,
+                    link_category: category,
+                    link_position: position,
+                    outbound: link.target === '_blank' || link.rel.includes('noopener') || link.rel.includes('noreferrer')
+                };
+                
+                // Track specific event types
+                switch(eventType) {
+                    case 'vote-click':
+                        window.votesClicked = (window.votesClicked || 0) + 1;
+                        eventParams.metric1 = window.votesClicked;
+                        eventParams.votes_total = window.votesClicked;
+                        
+                        // Store preferred platform
+                        localStorage.setItem('preferred_voting_platform', platform);
+                        localStorage.setItem('last_vote_timestamp', new Date().toISOString());
+                        
+                        trackGAEvent('vote_click', eventParams);
+                        break;
+                        
+                    case 'shop-click':
+                    case 'shop-visit':
+                        window.shopClicks = (window.shopClicks || 0) + 1;
+                        eventParams.metric1 = window.shopClicks;
+                        trackGAEvent('shop_interaction', eventParams);
+                        break;
+                        
+                    case 'store-click':
+                        trackGAEvent('store_click', eventParams);
+                        break;
+                        
+                    case 'github-click':
+                        trackGAEvent('github_click', eventParams);
+                        break;
+                        
+                    default:
+                        trackGAEvent('link_click', eventParams);
+                }
+                
+                // Track total link clicks
+                window.linksClicked = (window.linksClicked || 0) + 1;
+                eventParams.metric2 = window.linksClicked;
+                
+                // Add small delay to ensure tracking is sent before navigation
+                if (eventParams.outbound) {
+                    e.preventDefault();
+                    setTimeout(() => {
+                        window.open(link.href, link.target || '_self');
+                    }, 200);
+                }
+            }, true);
+        }
+        
+        // Form Interaction Tracking
+        function setupFormTracking() {
+            // If you add forms later, track them here
+            document.addEventListener('submit', function(e) {
+                const form = e.target;
+                trackGAEvent('form_submit', {
+                    form_id: form.id || 'unnamed_form',
+                    form_name: form.name || 'unnamed',
+                    form_fields: form.elements.length
+                });
+            });
+        }
+        
+        // Error Tracking
+        function setupErrorTracking() {
+            window.addEventListener('error', function(e) {
+                trackGAEvent('error_occurred', {
+                    error_message: e.message,
+                    error_filename: e.filename,
+                    error_lineno: e.lineno,
+                    error_colno: e.colno
+                });
+            });
+            
+            window.addEventListener('unhandledrejection', function(e) {
+                trackGAEvent('promise_rejection', {
+                    rejection_reason: e.reason?.message || String(e.reason)
+                });
+            });
+        }
+        
+        // User Engagement Events
+        function setupEngagementTracking() {
+            // Track when user becomes active after being idle
+            let idleTimer;
+            let isIdle = false;
+            
+            function resetIdleTimer() {
+                if (isIdle) {
+                    isIdle = false;
+                    trackGAEvent('user_active_again', {
+                        idle_duration: timeOnPage - window.lastIdleTime
+                    });
+                }
+                clearTimeout(idleTimer);
+                idleTimer = setTimeout(() => {
+                    isIdle = true;
+                    window.lastIdleTime = timeOnPage;
+                    trackGAEvent('user_idle', {
+                        idle_start_time: timeOnPage
+                    });
+                }, 30000); // 30 seconds of inactivity
+            }
+            
+            ['mousemove', 'keydown', 'click', 'scroll'].forEach(event => {
+                document.addEventListener(event, resetIdleTimer);
+            });
+            
+            resetIdleTimer();
+        }
+        
+        // Performance Tracking
+        function trackPerformance() {
+            if ('performance' in window) {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        const perfData = performance.getEntriesByType('navigation')[0];
+                        if (perfData) {
+                            trackGAEvent('page_performance', {
+                                dns_lookup: perfData.domainLookupEnd - perfData.domainLookupStart,
+                                tcp_connect: perfData.connectEnd - perfData.connectStart,
+                                server_response: perfData.responseStart - perfData.requestStart,
+                                dom_interactive: perfData.domInteractive,
+                                dom_complete: perfData.domComplete,
+                                page_load: perfData.loadEventEnd - perfData.loadEventStart,
+                                total_load_time: perfData.loadEventEnd - perfData.fetchStart
+                            });
+                        }
+                    }, 0);
+                });
+            }
+        }
+        
+        // ============================================
+        // EXISTING WEBSITE FUNCTIONALITY
+        // ============================================
+        
         // Typewriter Effect
-        const texts = [" Vote for HustlersMC", " Support Our Community", " Help Us Grow", " Vote Daily!"];
+        const texts = ["Vote for HustlersMC", "Support Our Community", "Help Us Grow", "Vote Daily!"];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
         const typewriter = document.getElementById('typewriter');
-
+        
         function typeEffect() {
             const currentText = texts[textIndex];
             
@@ -597,17 +932,17 @@
                 typewriter.textContent = currentText.substring(0, charIndex + 1);
                 charIndex++;
             }
-
+            
             if (!isDeleting && charIndex === currentText.length) {
                 setTimeout(() => isDeleting = true, 1500);
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 textIndex = (textIndex + 1) % texts.length;
             }
-
+            
             setTimeout(typeEffect, isDeleting ? 40 : 80);
         }
-
+        
         // Interactive Background
         const floatingBg = document.getElementById('floatingBg');
         function createBubbles() {
@@ -624,7 +959,7 @@
                 floatingBg.appendChild(bubble);
             }
         }
-
+        
         // Dynamic gradient
         document.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth) * 100;
@@ -635,8 +970,8 @@
                 linear-gradient(135deg, var(--primary), var(--secondary))
             `;
         });
-
-        // Update stats with animation
+        
+        // Counter animation
         function animateCounter(element, target, duration = 2000) {
             let start = 0;
             const increment = target / (duration / 16);
@@ -650,73 +985,81 @@
                 }
             }, 16);
         }
-
-        // Enhanced Vercel Analytics Tracking
-        function trackEvent(eventName, properties = {}) {
-            // Send to Vercel Analytics
-            if (typeof window.va === 'function') {
-                window.va('event', {
-                    name: eventName,
-                    data: properties
-                });
-            }
-            
-            // Also log for debugging
-            console.log(`[Analytics] ${eventName}:`, properties);
-        }
-
-        // Track user engagement
-        let maxScrollDepth = 0;
-        let timeOnPage = 0;
-        let lastInteractionTime = Date.now();
-
-        function trackScrollDepth() {
-            const scrollPercentage = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-            if (scrollPercentage > maxScrollDepth) {
-                maxScrollDepth = scrollPercentage;
-                trackEvent('scroll-depth', {
-                    depth: scrollPercentage,
-                    maxDepth: maxScrollDepth
-                });
-            }
-        }
-
-        function trackTimeOnPage() {
-            const now = Date.now();
-            const timeElapsed = Math.floor((now - lastInteractionTime) / 1000);
-            timeOnPage += timeElapsed;
-            lastInteractionTime = now;
-            
-            // Track every 30 seconds
-            if (timeOnPage % 30 === 0) {
-                trackEvent('time-on-page', {
-                    seconds: timeOnPage,
-                    minutes: Math.floor(timeOnPage / 60)
-                });
-            }
-        }
-
-        // Track page exit
-        function trackPageExit() {
-            // Send final metrics before user leaves
-            trackEvent('page-exit', {
-                timeOnPage: timeOnPage,
-                maxScrollDepth: maxScrollDepth,
-                votesClicked: window.votesClicked || 0,
-                linksClicked: window.linksClicked || 0
-            });
-        }
-
-        // Initialize
+        
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        
         document.addEventListener('DOMContentLoaded', () => {
-            typeEffect();
+            // Initialize GA4 with user properties
+            if (typeof gtag === 'function' && !window.isDevelopment) {
+                // Set user properties
+                gtag('set', 'user_properties', {
+                    'device_category': getDeviceCategory(),
+                    'preferred_platform': getPreferredPlatform(),
+                    'returning_visitor': localStorage.getItem('ga_user_id') ? 'true' : 'false',
+                    'voting_frequency': localStorage.getItem('vote_count') > 10 ? 'frequent' : 'occasional'
+                });
+                
+                // Track page view with enhanced parameters
+                trackGAEvent('page_view', {
+                    page_title: document.title,
+                    page_location: window.location.href,
+                    page_path: window.location.pathname,
+                    device_category: getDeviceCategory(),
+                    preferred_platform: getPreferredPlatform(),
+                    screen_resolution: `${window.screen.width}x${window.screen.height}`,
+                    viewport_size: `${window.innerWidth}x${window.innerHeight}`,
+                    language: navigator.language,
+                    referrer: document.referrer || '(direct)',
+                    session_number: parseInt(localStorage.getItem('session_count') || '1'),
+                    session_engaged: '1',
+                    engagement_time_msec: '100'
+                });
+                
+                // Increment session count
+                let sessionCount = parseInt(localStorage.getItem('session_count') || '0');
+                localStorage.setItem('session_count', (sessionCount + 1).toString());
+            }
+            
+            // Initialize website functionality
+            typeEffect(); // This starts the typewriter effect
             createBubbles();
             
-            // Track page load
-            trackEvent('page-load', {
-                referrer: document.referrer || 'direct',
-                screenSize: `${window.innerWidth}x${window.innerHeight}`,
-                userAgent: navigator.userAgent.substring(0, 100)
+            // Initialize GA4 tracking
+            startEngagementTimer();
+            setupLinkTracking();
+            setupFormTracking();
+            setupErrorTracking();
+            setupEngagementTracking();
+            trackPerformance();
+            
+            // Track scroll
+            window.addEventListener('scroll', trackScrollDepth);
+            
+            // Track page exit
+            window.addEventListener('beforeunload', () => {
+                trackGAEvent('page_exit', {
+                    time_on_page: timeOnPage,
+                    max_scroll_depth: maxScrollDepth,
+                    votes_clicked: window.votesClicked || 0,
+                    links_clicked: window.linksClicked || 0,
+                    session_duration: timeOnPage
+                });
+            });
+            
+            // Track visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    trackGAEvent('page_hidden', {
+                        time_on_page: timeOnPage,
+                        max_scroll_depth: maxScrollDepth
+                    });
+                } else {
+                    trackGAEvent('page_visible', {
+                        time_on_page: timeOnPage
+                    });
+                }
             });
             
             // Add CSS animation for bubbles
@@ -737,8 +1080,11 @@
             
             // Animate stats
             setTimeout(() => {
-                animateCounter(document.getElementById('totalVotes'), 10500);
-                animateCounter(document.getElementById('activeUsers'), 650);
+                const totalVotesEl = document.getElementById('totalVotes');
+                const activeUsersEl = document.getElementById('activeUsers');
+                
+                if (totalVotesEl) animateCounter(totalVotesEl, 10500);
+                if (activeUsersEl) animateCounter(activeUsersEl, 650);
             }, 1000);
             
             // Server rank rotation
@@ -746,77 +1092,22 @@
             let rankIndex = 0;
             const rankElement = document.getElementById('serverRank');
             
-            setInterval(() => {
-                rankElement.textContent = ranks[rankIndex];
-                rankIndex = (rankIndex + 1) % ranks.length;
-            }, 3000);
+            if (rankElement) {
+                setInterval(() => {
+                    rankElement.textContent = ranks[rankIndex];
+                    rankIndex = (rankIndex + 1) % ranks.length;
+                }, 3000);
+            }
             
-            // Enhanced click tracking for all links
-            document.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const analyticsData = this.dataset;
-                    const platform = analyticsData.platform || this.textContent.trim() || this.href;
-                    const eventType = analyticsData.analytics || 'link-click';
-                    
-                    if (eventType === 'vote-click') {
-                        window.votesClicked++;
-                        trackEvent('vote-platform-click', {
-                            platform: platform,
-                            url: this.href,
-                            totalVotesClicked: window.votesClicked,
-                            timestamp: new Date().toISOString()
-                        });
-                    } else {
-                        window.linksClicked++;
-                        trackEvent(eventType, {
-                            target: platform,
-                            url: this.href,
-                            text: this.textContent.trim(),
-                            timestamp: new Date().toISOString()
-                        });
-                    }
-                });
-            });
-            
-            // Track scroll depth
-            window.addEventListener('scroll', trackScrollDepth);
-            
-            // Track time on page
-            setInterval(trackTimeOnPage, 1000);
-            
-            // Track page exit
-            window.addEventListener('beforeunload', trackPageExit);
-            
-            // Track visibility changes
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    trackEvent('page-hidden', {
-                        timeOnPage: timeOnPage,
-                        maxScrollDepth: maxScrollDepth
-                    });
-                } else {
-                    trackEvent('page-visible', {
-                        timeOnPage: timeOnPage
-                    });
-                }
-            });
-            
-            // Track engagement
-            ['click', 'keydown', 'mousemove'].forEach(eventType => {
-                document.addEventListener(eventType, () => {
-                    lastInteractionTime = Date.now();
-                    trackEvent('user-interaction', {
-                        eventType: eventType,
-                        timeOnPage: timeOnPage
-                    });
-                });
-            });
+            // Log development mode status
+            if (window.isDevelopment) {
+                console.log('[GA4] Development mode active - events logged to console');
+            }
         });
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                // Close any open modals or focus on main content
                 document.getElementById('main-content').focus();
             }
         });
