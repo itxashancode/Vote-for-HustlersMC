@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote for HustlersMC - Daily Minecraft Server Voting</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Daily voting platform for HustlersMC Minecraft server. Support our community, vote on 10+ platforms, help us grow, and get rewards. Join our thriving Minecraft community today!">
+    <meta name="keywords" content="Minecraft server voting, HustlersMC vote, Minecraft server list, vote daily, Minecraft community, server rankings, Minecraft rewards, best Minecraft servers">
+    <meta name="author" content="HustlersMC">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Vote for HustlersMC - Boost Our Minecraft Server Ranking">
+    <meta property="og:description" content="Support HustlersMC Minecraft server by voting daily. Help us reach #1 on server lists and grow our amazing community. Every vote counts!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hustlersmc-vote.com/">
+    <meta property="og:image" content="https://hustlersmc-vote.com/images/og-image.png">
+    <meta property="og:site_name" content="HustlersMC Voting Portal">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vote for HustlersMC Minecraft Server">
+    <meta name="twitter:description" content="Daily voting portal for HustlersMC. Help us climb the server rankings!">
+    <meta name="twitter:image" content="https://hustlersmc-vote.com/images/twitter-card.png">
+    
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="eRHWJP-4bD9npBew0aXLuXlkHqsUnGtT5cMKQZA5s2s" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hustlersmc-vote.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Vercel Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "HustlersMC Voting Portal",
+        "url": "https://hustlersmc-vote.com/",
+        "description": "Official voting portal for HustlersMC Minecraft server",
+        "publisher": {
+            "@type": "Organization",
+            "name": "HustlersMC",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://hustlersmc-vote.com/logo.png"
+            }
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://hustlersmc-vote.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #00ff96;
+            --success: #4CAF50;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-light: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Skip to main content for accessibility */
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent);
+            color: #000;
+            padding: 8px 16px;
+            z-index: 9999;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
+        }
+
+        .floating-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .glass-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 15px 30px;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .main-container {
+            padding: 100px 20px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            width: 100%;
+        }
+
+        .typewriter-container {
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .typing-text {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .vote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .vote-card {
+            border-left: 4px solid var(--accent);
+        }
+
+        .success-card {
+            border-left: 4px solid var(--success);
+        }
+
+        .success-card .card-title i {
+            color: var(--success);
+        }
+
+        .shop-card {
+            border-left: 4px solid #9400d3;
+            grid-column: span 2;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+        }
+
+        .card-desc {
+            opacity: 0.8;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 3px 8px;
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin: 10px auto;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(5px);
+        }
+
+        .admin-panel {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 15px;
+            width: 180px;
+            text-align: center;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .github-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .typing-text {
+                font-size: 2.5rem;
+            }
+            
+            .vote-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .shop-card {
+                grid-column: span 1;
+            }
+            
+            .admin-panel {
+                position: static;
+                margin: 20px auto;
+                width: 90%;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Accessibility: Skip to main content -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
+    <div class="floating-bg" id="floatingBg"></div>
+    
+    <nav class="glass-nav" aria-label="Main navigation">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="#vote" class="nav-link">Vote</a>
+                <a href="#shop" class="nav-link">Shop</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="main-container">
+        <section class="hero">
+            <div class="typewriter-container">
+                <h1 class="typing-text" id="typewriter"></h1>
+            </div>
+            <p class="subtitle">Help our server grow by voting daily! Each vote supports our community and helps us provide better features.</p>
+
+
+        <section id="vote" style="width: 100%;">
+            <h2 style="text-align: center; margin-bottom: 30px; font-size: 2rem;">Vote on These Platforms</h2>
+            <div class="vote-grid">
+                <!-- ALL WORKING VOTING LINKS -->
+                
+                <a href="https://minecraft-server-list.com/server/503455/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft Server List">
+                    <h3 class="card-title"><i class="fas fa-chart-line card-icon"></i> Minecraft Server List</h3>
+                    <p class="card-desc">Vote and help us reach the top of the charts</p>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://minecraft-mp.com/server/330660/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft MP">
+                    <h3 class="card-title"><i class="fas fa-globe card-icon"></i> Minecraft MP</h3>
+                    <p class="card-desc">Support us on the global server list</p>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://www.planetminecraft.com/server/hustlersmc/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Planet Minecraft">
+                    <h3 class="card-title"><i class="fas fa-globe-americas card-icon"></i> Planet Minecraft</h3>
+                    <p class="card-desc">Vote on the largest MC community</p>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://minecraftservers.org/vote/285642" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft Servers">
+                    <h3 class="card-title"><i class="fas fa-search card-icon"></i> Minecraft Servers</h3>
+                    <p class="card-desc">Find and vote for us on MC Servers</p>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://topg.org/minecraft-servers/server-652747" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="TopG Minecraft">
+                    <h3 class="card-title"><i class="fas fa-trophy card-icon"></i> TopG Minecraft</h3>
+                    <p class="card-desc">Vote on TopG ranking platform</p>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://minecraft-server.net/vote/HustlersMC" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft Server">
+                    <h3 class="card-title"><i class="fas fa-server card-icon"></i> Minecraft Server</h3>
+                    <p class="card-desc">Simple and fast voting platform</p>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://minecraft.buzz/server/hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card success-card" data-analytics="vote-click" data-platform="Minecraft Buzz">
+                    <h3 class="card-title"><i class="fas fa-bullhorn card-icon"></i> Minecraft Buzz</h3>
+                    <p class="card-desc">Boost our visibility on this popular platform</p>
+                    <div class="success-badge">
+                        <i class="fas fa-check-circle"></i> Verified Working
+                    </div>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://minecraftlist.org/vote/hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Minecraft List">
+                    <h3 class="card-title"><i class="fas fa-list card-icon"></i> Minecraft List</h3>
+                    <p class="card-desc">Simple and effective voting</p>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://servers-minecraft.net/server-hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Servers Minecraft">
+                    <h3 class="card-title"><i class="fas fa-network-wired card-icon"></i> Servers Minecraft</h3>
+                    <p class="card-desc">Network with other MC enthusiasts</p>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://best-minecraft-servers.co/server/hustlersmc" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="Best MC Servers">
+                    <h3 class="card-title"><i class="fas fa-award card-icon"></i> Best MC Servers</h3>
+                    <p class="card-desc">Vote on the Best Minecraft Servers</p>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://topminecraftservers.org/server/258" target="_blank" rel="noopener noreferrer" class="glass-card success-card" data-analytics="vote-click" data-platform="Top MC Servers">
+                    <h3 class="card-title"><i class="fas fa-star card-icon"></i> Top MC Servers</h3>
+                    <p class="card-desc">High-traffic voting platform</p>
+                    <div class="success-badge">
+                        <i class="fas fa-bolt"></i> Fast Loading
+                    </div>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://minecraftpocket-servers.com/server/118822/vote/" target="_blank" rel="noopener noreferrer" class="glass-card vote-card" data-analytics="vote-click" data-platform="MC Pocket Servers">
+                    <h3 class="card-title"><i class="fas fa-mobile-alt card-icon"></i> MC Pocket Servers</h3>
+                    <p class="card-desc">Supports Minecraft Pocket Edition</p>
+                    <span class="cta-button">Vote Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </section>
+
+        <section id="shop" style="margin-top: 60px; width: 100%;">
+            <div class="glass-card shop-card" data-analytics="shop-click">
+                <h2 class="card-title"><i class="fas fa-store card-icon"></i> Enchantment Shop</h2>
+                <p class="card-desc">Visit our exclusive shop for special enchantments, items, and perks. Enhance your gameplay with unique features!</p>
+                <a href="https://pwarpmystictome.netlify.app/" target="_blank" rel="noopener noreferrer" class="cta-button" data-analytics="shop-visit">
+                    Visit Shop <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://hustlersmc.tebex.io/" target="_blank" rel="noopener noreferrer" class="footer-link" data-analytics="store-click">HustlersMC Store</a>
+                <!-- GitHub Link - REPLACE # WITH YOUR ACTUAL GITHUB URL -->
+                <a href="https://github.com/itxashancode" target="_blank" rel="noopener noreferrer" class="github-link" data-analytics="github-click">
+                    <i class="fab fa-github github-icon"></i> GitHub Repo
+                </a>
+            </div>
+            <p>© 2029 Atlantis Team. 
+                Not Affiliated with Mojang AB/HustlerMC
+                <a href="https://www.minecraft.net/" target="_blank" rel="noopener noreferrer" class="footer-link" data-analytics="minecraft-official-click">Minecraft</a> is a trademark of Mojang AB.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Typewriter Effect
+        const texts = [" Vote for HustlersMC", " Support Our Community", " Help Us Grow", " Vote Daily!"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriter = document.getElementById('typewriter');
+
+        function typeEffect() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typewriter.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriter.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+
+            setTimeout(typeEffect, isDeleting ? 40 : 80);
+        }
+
+        // Interactive Background
+        const floatingBg = document.getElementById('floatingBg');
+        function createBubbles() {
+            for (let i = 0; i < 25; i++) {
+                const bubble = document.createElement('div');
+                bubble.style.position = 'absolute';
+                bubble.style.width = Math.random() * 40 + 10 + 'px';
+                bubble.style.height = bubble.style.width;
+                bubble.style.background = `rgba(255, 255, 255, ${Math.random() * 0.15})`;
+                bubble.style.borderRadius = '50%';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.top = Math.random() * 100 + '%';
+                bubble.style.animation = `float ${Math.random() * 15 + 15}s infinite linear`;
+                floatingBg.appendChild(bubble);
+            }
+        }
+
+        // Dynamic gradient
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            
+            document.body.style.background = `
+                radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                linear-gradient(135deg, var(--primary), var(--secondary))
+            `;
+        });
+
+        // Update stats with animation
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target.toLocaleString() + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString();
+                }
+            }, 16);
+        }
+
+        // Enhanced Vercel Analytics Tracking
+        function trackEvent(eventName, properties = {}) {
+            // Send to Vercel Analytics
+            if (typeof window.va === 'function') {
+                window.va('event', {
+                    name: eventName,
+                    data: properties
+                });
+            }
+            
+            // Also log for debugging
+            console.log(`[Analytics] ${eventName}:`, properties);
+        }
+
+        // Track user engagement
+        let maxScrollDepth = 0;
+        let timeOnPage = 0;
+        let lastInteractionTime = Date.now();
+
+        function trackScrollDepth() {
+            const scrollPercentage = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (scrollPercentage > maxScrollDepth) {
+                maxScrollDepth = scrollPercentage;
+                trackEvent('scroll-depth', {
+                    depth: scrollPercentage,
+                    maxDepth: maxScrollDepth
+                });
+            }
+        }
+
+        function trackTimeOnPage() {
+            const now = Date.now();
+            const timeElapsed = Math.floor((now - lastInteractionTime) / 1000);
+            timeOnPage += timeElapsed;
+            lastInteractionTime = now;
+            
+            // Track every 30 seconds
+            if (timeOnPage % 30 === 0) {
+                trackEvent('time-on-page', {
+                    seconds: timeOnPage,
+                    minutes: Math.floor(timeOnPage / 60)
+                });
+            }
+        }
+
+        // Track page exit
+        function trackPageExit() {
+            // Send final metrics before user leaves
+            trackEvent('page-exit', {
+                timeOnPage: timeOnPage,
+                maxScrollDepth: maxScrollDepth,
+                votesClicked: window.votesClicked || 0,
+                linksClicked: window.linksClicked || 0
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            typeEffect();
+            createBubbles();
+            
+            // Track page load
+            trackEvent('page-load', {
+                referrer: document.referrer || 'direct',
+                screenSize: `${window.innerWidth}x${window.innerHeight}`,
+                userAgent: navigator.userAgent.substring(0, 100)
+            });
+            
+            // Add CSS animation for bubbles
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float {
+                    0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+                    25% { transform: translateY(-30px) translateX(15px) rotate(90deg); }
+                    50% { transform: translateY(-15px) translateX(30px) rotate(180deg); }
+                    75% { transform: translateY(-45px) translateX(15px) rotate(270deg); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Initialize counters
+            window.votesClicked = 0;
+            window.linksClicked = 0;
+            
+            // Animate stats
+            setTimeout(() => {
+                animateCounter(document.getElementById('totalVotes'), 10500);
+                animateCounter(document.getElementById('activeUsers'), 650);
+            }, 1000);
+            
+            // Server rank rotation
+            const ranks = ['Top 50', 'Top 45', 'Top 40', 'Rising Fast!'];
+            let rankIndex = 0;
+            const rankElement = document.getElementById('serverRank');
+            
+            setInterval(() => {
+                rankElement.textContent = ranks[rankIndex];
+                rankIndex = (rankIndex + 1) % ranks.length;
+            }, 3000);
+            
+            // Enhanced click tracking for all links
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const analyticsData = this.dataset;
+                    const platform = analyticsData.platform || this.textContent.trim() || this.href;
+                    const eventType = analyticsData.analytics || 'link-click';
+                    
+                    if (eventType === 'vote-click') {
+                        window.votesClicked++;
+                        trackEvent('vote-platform-click', {
+                            platform: platform,
+                            url: this.href,
+                            totalVotesClicked: window.votesClicked,
+                            timestamp: new Date().toISOString()
+                        });
+                    } else {
+                        window.linksClicked++;
+                        trackEvent(eventType, {
+                            target: platform,
+                            url: this.href,
+                            text: this.textContent.trim(),
+                            timestamp: new Date().toISOString()
+                        });
+                    }
+                });
+            });
+            
+            // Track scroll depth
+            window.addEventListener('scroll', trackScrollDepth);
+            
+            // Track time on page
+            setInterval(trackTimeOnPage, 1000);
+            
+            // Track page exit
+            window.addEventListener('beforeunload', trackPageExit);
+            
+            // Track visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    trackEvent('page-hidden', {
+                        timeOnPage: timeOnPage,
+                        maxScrollDepth: maxScrollDepth
+                    });
+                } else {
+                    trackEvent('page-visible', {
+                        timeOnPage: timeOnPage
+                    });
+                }
+            });
+            
+            // Track engagement
+            ['click', 'keydown', 'mousemove'].forEach(eventType => {
+                document.addEventListener(eventType, () => {
+                    lastInteractionTime = Date.now();
+                    trackEvent('user-interaction', {
+                        eventType: eventType,
+                        timeOnPage: timeOnPage
+                    });
+                });
+            });
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close any open modals or focus on main content
+                document.getElementById('main-content').focus();
+            }
+        });
+    </script>
+</body>
+</html>
